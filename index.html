@@ -106,7 +106,7 @@
                     <i class="fa-solid fa-shuffle"></i> Losuj
                 </button>
             </div>
-            <blockquote id="random-quote-text" class="text-lg md:text-xl font-serif-custom text-zinc-100 italic leading-relaxed mb-3">
+            <blockquote id="random-quote-text" class="text-lg md:text-xl font-serif-custom text-zinc-100 italic leading-relaxed mb-3 whitespace-pre-line">
                 "Wczytywanie..."
             </blockquote>
             <div class="flex justify-between items-end text-xs pt-2 border-t border-zinc-800/60">
@@ -213,18 +213,27 @@
         let globalLang = 'pl';
         let currentFilter = 'all';
 
-        // Load Quotes from quotes.json only
+        // Ładowanie wyłącznie z pliku quotes.json
         async function loadQuotes() {
+            // Obliczanie absolutnego adresu na GitHub Pages
+            const jsonUrl = new URL('quotes.json', window.location.href).href + '?v=' + Date.now();
+
             try {
-                const response = await fetch('quotes.json');
+                const response = await fetch(jsonUrl);
                 if (response.ok) {
-                    quotes = await response.json();
+                    const loadedData = await response.json();
+                    if (Array.isArray(loadedData)) {
+                        quotes = loadedData;
+                    } else {
+                        console.error('Plik JSON nie zawiera tablicy.');
+                    }
                 } else {
-                    quotes = [];
+                    console.error('Błąd HTTP pobierania:', response.status);
                 }
             } catch (err) {
-                quotes = [];
+                console.error('Błąd ładowania quotes.json:', err);
             }
+
             renderQuotes();
             displayRandomQuote();
         }
@@ -315,19 +324,17 @@
                 return `
                     <div class="glass-card rounded-2xl p-5 transition space-y-3 relative">
                         <div class="flex justify-between items-center">
-                            <!-- Card Lang buttons -->
                             <div class="flex items-center gap-1 bg-zinc-900/90 border border-zinc-800 rounded-lg p-0.5 text-[10px]">
                                 <button onclick="setCardLang('${q.id}', 'pl')" class="px-2 py-0.5 rounded font-bold ${currentCardLang === 'pl' ? 'bg-amber-500 text-black' : 'text-zinc-400 hover:text-white'}">PL</button>
                                 <button onclick="setCardLang('${q.id}', 'en')" class="px-2 py-0.5 rounded font-bold ${currentCardLang === 'en' ? 'bg-amber-500 text-black' : 'text-zinc-400 hover:text-white'}">EN</button>
                                 <button onclick="setCardLang('${q.id}', 'de')" class="px-2 py-0.5 rounded font-bold ${currentCardLang === 'de' ? 'bg-amber-500 text-black' : 'text-zinc-400 hover:text-white'}">DE</button>
                             </div>
 
-                            <!-- Controls -->
                             <div class="flex items-center gap-2.5">
                                 <button onclick="toggleFavorite('${q.id}')" class="text-zinc-500 hover:text-rose-500 transition text-sm">
                                     <i class="${q.isFavorite ? 'fa-solid text-rose-500' : 'fa-regular'} fa-heart"></i>
                                 </button>
-                                <button onclick="copyToClipboard('${quoteDisplay.replace(/'/g, "\\'")}')" class="text-zinc-500 hover:text-amber-400 transition text-xs">
+                                <button onclick="copyToClipboard('${quoteDisplay.replace(/'/g, "\\'").replace(/\n/g, " ")}')" class="text-zinc-500 hover:text-amber-400 transition text-xs">
                                     <i class="fa-regular fa-copy"></i>
                                 </button>
                                 <button onclick="deleteQuote('${q.id}')" class="text-zinc-600 hover:text-amber-600 transition text-xs">
@@ -336,12 +343,10 @@
                             </div>
                         </div>
 
-                        <!-- Quote Text -->
-                        <blockquote class="text-base text-zinc-100 font-serif-custom italic leading-relaxed pt-1">
+                        <blockquote class="text-base text-zinc-100 font-serif-custom italic leading-relaxed pt-1 whitespace-pre-line">
                             "${quoteDisplay}"
                         </blockquote>
 
-                        <!-- Character, Title & Author -->
                         <div class="flex justify-between items-end text-xs pt-2 border-t border-zinc-800/60">
                             <div>
                                 <span class="text-amber-400 font-bold block">${q.character || 'Nieznany bohater'}</span>
@@ -444,7 +449,6 @@
             fileReader.readAsText(e.target.files[0]);
         }
 
-        // Initialize App purely from quotes.json
         loadQuotes();
     </script>
 </body>
