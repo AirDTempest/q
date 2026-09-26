@@ -27,7 +27,7 @@
   },
   {
     "id": "3",
-    "character": "Winston Smith (Rozmyślania o prolach)",
+    "character": "Winston Smith (o prolach)",
     "title": "1984",
     "author": "George Orwell",
     "text": {
@@ -40,7 +40,7 @@
   },
   {
     "id": "4",
-    "character": "Partia / Winston Smith",
+    "character": "Slogan Partii",
     "title": "1984",
     "author": "George Orwell",
     "text": {
@@ -53,7 +53,7 @@
   },
   {
     "id": "5",
-    "character": "Hasła Partii",
+    "character": "Slogan Partii",
     "title": "1984",
     "author": "George Orwell",
     "text": {
@@ -89,5 +89,5 @@
     },
     "isFavorite": false,
     "cardLang": "pl"
-  },
+  }
 ]
