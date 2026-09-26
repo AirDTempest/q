@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "author": "George Orwell",
+    "source": "1984",
+    "text": {
+      "pl": "Kto rządzi przeszłością, ten rządzi przyszłością. Kto rządzi teraźniejszością, ten rządzi przeszłością.",
+      "en": "Who controls the past controls the future. Who controls the present controls the past.",
+      "de": "Wer die Vergangenheit kontrolliert, kontrolliert die Zukunft. Wer die Gegenwart kontrolliert, kontrolliert die Vergangenheit."
+    },
+    "isFavorite": true,
+    "cardLang": "pl"
+  },
+  {
+    "id": "2",
+    "author": "Fang Yuan",
+    "source": "Reverend Insanity",
+    "text": {
+      "pl": "Ludzie żyją tylko przez sto lat, to tak krótkie jak sen. Jaki jest sens życia w strachu i podporządkowaniu?",
+      "en": "Man lives for merely a hundred years, it is as short as a dream. What is the point of living in fear and submission?",
+      "de": "Der Mensch lebt nur hundert Jahre, das ist kurz wie ein Traum. Was nützt es, in Angst und Unterwerfung zu leben?"
+    },
+    "isFavorite": false,
+    "cardLang": "pl"
+  },
+  {
+    "id": "3",
+    "author": "Klein Moretti",
+    "source": "Lord of the Mysteries",
+    "text": {
+      "pl": "Nie stracimy naszej cząstki ludzkości, bez względu na to, jak głęboko zanurzymy się w ciemności.",
+      "en": "We will not lose our humanity, no matter how deep into the darkness we plunge.",
+      "de": "Wir werden unsere Menschlichkeit nicht verlieren, egal wie tief wir in die Dunkelheit eintauchen."
+    },
+    "isFavorite": true,
+    "cardLang": "pl"
+  }
+]
