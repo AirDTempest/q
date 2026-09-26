@@ -1,41 +1,93 @@
 [
   {
     "id": "1",
-    "author": "George Orwell",
+    "character": "Winston Smith / Piosenka",
     "title": "1984",
-    "character": "Winston Smith",
+    "author": "George Orwell",
     "text": {
-      "pl": "Kto rządzi przeszłością, ten rządzi przyszłością. Kto rządzi teraźniejszością, ten rządzi przeszłością.",
-      "en": "Who controls the past controls the future. Who controls the present controls the past.",
-      "de": "Wer die Vergangenheit kontrolliert, kontrolliert die Zukunft."
+      "pl": "Pod konarami kasztana.\nPan sprzedał mnie, a ja pana.\nIch pogrzebano, a my od rana.\nPod konarami kasztana.",
+      "en": "Under the spreading chestnut tree\nI sold you and you sold me:\nThere lie they, and here lie we\nUnder the spreading chestnut tree.",
+      "de": "Unter dem ausladenden Kastanienbaum\nhabe ich dich verkauft und du hast mich verkauft:\nDort liegen sie und hier liegen wir\nUnter dem ausladenden Kastanienbaum."
     },
     "isFavorite": true,
     "cardLang": "pl"
   },
   {
     "id": "2",
-    "author": "Gu Zhen Ren",
-    "title": "Reverend Insanity",
-    "character": "Fang Yuan",
+    "character": "O’Brien & Winston Smith",
+    "title": "1984",
+    "author": "George Orwell",
     "text": {
-      "pl": "Ludzie żyją tylko przez sto lat, to tak krótkie jak sen. Jaki jest sens życia w strachu i podporządkowaniu?",
-      "en": "Man lives for merely a hundred years, it is as short as a dream. What is the point of living in fear and submission?",
-      "de": "Der Mensch lebt nur hundert Jahre, das ist kurz wie ein Traum."
+      "pl": "– Czy Wielki Brat istnieje?\n– Oczywiście, że istnieje. Partia istnieje, a Wielki Brat to ucieleśnienie Partii.\n– Czy istnieje w ten sam sposób co ja?\n– Ty nie możesz istnieć.",
+      "en": "“Does Big Brother exist?”\n“Of course he exists. The Party exists. Big Brother is the embodiment of the Party.”\n“Does he exist in the same way as I exist?”\n“You do not exist.”",
+      "de": "„Existiert der Große Bruder?“\n„Natürlich existiert er. Die Partei existiert. Der Große Bruder ist die Verkörperung der Partei.“\n„Existiert er auf dieselbe Weise wie ich?“\n„Du existierst nicht.“"
+    },
+    "isFavorite": true,
+    "cardLang": "pl"
+  },
+  {
+    "id": "3",
+    "character": "Winston Smith (Rozmyślania o prolach)",
+    "title": "1984",
+    "author": "George Orwell",
+    "text": {
+      "pl": "Nie zbuntują się, póki nie zyskają świadomości, a nie zyskają jej, póki się nie zbuntują.",
+      "en": "Until they become conscious they will never rebel, and until after they have rebelled they cannot become conscious.",
+      "de": "Bis sie sich bewusst werden, werden sie sich nie auflehnen, und bis sie sich aufgelehnt haben, können sie sich nicht bewusst werden."
+    },
+    "isFavorite": true,
+    "cardLang": "pl"
+  },
+  {
+    "id": "4",
+    "character": "Partia / Winston Smith",
+    "title": "1984",
+    "author": "George Orwell",
+    "text": {
+      "pl": "Kto rządzi przeszłością, ten rządzi przyszłością. Kto rządzi teraźniejszością, ten rządzi przeszłością.",
+      "en": "Who controls the past controls the future. Who controls the present controls the past.",
+      "de": "Wer die Vergangenheit kontrolliert, kontrolliert die Zukunft. Wer die Gegenwart kontrolliert, kontrolliert die Vergangenheit."
     },
     "isFavorite": false,
     "cardLang": "pl"
   },
   {
-    "id": "3",
-    "author": "Cuttlefish That Loves Diving",
-    "title": "Lord of the Mysteries",
-    "character": "Klein Moretti",
+    "id": "5",
+    "character": "Hasła Partii",
+    "title": "1984",
+    "author": "George Orwell",
     "text": {
-      "pl": "Nie stracimy naszej cząstki ludzkości, bez względu na to, jak głęboko zanurzymy się w ciemności.",
-      "en": "We will not lose our humanity, no matter how deep into the darkness we plunge.",
-      "de": "Wir werden unsere Menschlichkeit nicht verlieren, egal wie tief wir in die Dunkelheit eintauchen."
+      "pl": "Wojna to pokój. Wolność to niewola. Ignorancja to siła.",
+      "en": "War is peace. Freedom is slavery. Ignorance is strength.",
+      "de": "Krieg ist Frieden. Freiheit ist Sklaverei. Unwissenheit ist Stärke."
     },
-    "isFavorite": true,
+    "isFavorite": false,
     "cardLang": "pl"
-  }
+  },
+  {
+    "id": "6",
+    "character": "Winston Smith",
+    "title": "1984",
+    "author": "George Orwell",
+    "text": {
+      "pl": "Wolność to prawo do mówienia, że dwa plus dwa jest cztery. Jeśli to jest zagwarantowane, wszystko inne przyjdzie samo.",
+      "en": "Freedom is the freedom to say that two plus two make four. If that is granted, all else follows.",
+      "de": "Freiheit ist die Freiheit, zu sagen, dass zwei und zwei vier ist. Wenn das gewährt ist, ergibt sich alles andere von selbst."
+    },
+    "isFavorite": false,
+    "cardLang": "pl"
+  },
+  {
+    "id": "7",
+    "character": "Hasło Partii",
+    "title": "1984",
+    "author": "George Orwell",
+    "text": {
+      "pl": "Wielki Brat Patrzy.",
+      "en": "Big Brother is Watching You.",
+      "de": "Der Große Bruder sieht dich."
+    },
+    "isFavorite": false,
+    "cardLang": "pl"
+  },
 ]
