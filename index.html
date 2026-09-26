@@ -52,7 +52,6 @@
             box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -70,7 +69,7 @@
 </head>
 <body class="pb-12 antialiased">
 
-    <!-- Top Navigation Bar -->
+    <!-- Navbar Header -->
     <header class="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-amber-900/30 px-4 py-3.5">
         <div class="max-w-3xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2">
@@ -86,7 +85,7 @@
                     <button onclick="setGlobalLang('de')" id="btn-global-de" class="px-2.5 py-1 rounded font-bold text-zinc-400 hover:text-amber-400">DE</button>
                 </div>
 
-                <!-- Backup Menu Button -->
+                <!-- Backup Modal Trigger -->
                 <button onclick="toggleBackupModal()" class="p-2 text-amber-500/80 hover:text-amber-300 rounded-lg bg-zinc-900/90 border border-amber-900/40 hover:border-amber-500/50 transition">
                     <i class="fa-solid fa-floppy-disk"></i>
                 </button>
@@ -96,7 +95,7 @@
 
     <main class="max-w-3xl mx-auto px-4 mt-6 space-y-6">
 
-        <!-- Random Quote Header Banner -->
+        <!-- Random Quote Header -->
         <div id="random-quote-card" class="glass-card rounded-2xl p-5 md:p-6 relative overflow-hidden">
             <div class="absolute -right-4 -bottom-6 text-zinc-800/20 text-9xl pointer-events-none font-serif-custom">“</div>
             <div class="flex justify-between items-start mb-3">
@@ -110,28 +109,35 @@
             <blockquote id="random-quote-text" class="text-lg md:text-xl font-serif-custom text-zinc-100 italic leading-relaxed mb-3">
                 "Wczytywanie..."
             </blockquote>
-            <div class="flex justify-between items-center text-xs">
-                <p id="random-quote-author" class="text-amber-400 font-semibold">— Autor</p>
-                <p id="random-quote-source" class="text-zinc-500 italic">Źródło</p>
+            <div class="flex justify-between items-end text-xs pt-2 border-t border-zinc-800/60">
+                <div>
+                    <p id="random-quote-character" class="text-amber-400 font-bold text-sm">Bohater</p>
+                    <p id="random-quote-title" class="text-zinc-400 italic">Tytuł</p>
+                </div>
+                <p id="random-quote-author" class="text-zinc-500 text-[11px]">Autor</p>
             </div>
         </div>
 
-        <!-- Add Quote Form Button / Toggle -->
+        <!-- Add Quote Form -->
         <div class="glass-card rounded-2xl p-4 md:p-5">
             <button onclick="toggleForm()" class="w-full flex justify-between items-center text-amber-400 font-semibold text-xs tracking-wider uppercase">
-                <span class="flex items-center gap-2"><i class="fa-solid fa-circle-plus text-amber-500 text-sm"></i> Dodaj własny cytat</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-circle-plus text-amber-500 text-sm"></i> Dodaj cytat</span>
                 <i id="form-chevron" class="fa-solid fa-chevron-down transition-transform"></i>
             </button>
 
             <form id="add-quote-form" onsubmit="saveQuote(event)" class="hidden mt-4 space-y-4 pt-4 border-t border-zinc-800/80">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div>
-                        <label class="block text-[11px] text-zinc-400 mb-1">Autor *</label>
-                        <input type="text" id="input-author" required placeholder="np. Arthur Leywin" class="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-100 focus:border-amber-500 outline-none">
+                        <label class="block text-[11px] text-amber-400 mb-1 font-semibold">Bohater (Mówca) *</label>
+                        <input type="text" id="input-character" required placeholder="np. Fang Yuan" class="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-100 focus:border-amber-500 outline-none">
                     </div>
                     <div>
-                        <label class="block text-[11px] text-zinc-400 mb-1">Źródło (Książka / Tom)</label>
-                        <input type="text" id="input-source" placeholder="np. Tom 1, Rozdział 12" class="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-100 focus:border-amber-500 outline-none">
+                        <label class="block text-[11px] text-zinc-400 mb-1">Tytuł / Dzieło *</label>
+                        <input type="text" id="input-title" required placeholder="np. Reverend Insanity" class="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-100 focus:border-amber-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-zinc-400 mb-1">Autor książki / dzieła</label>
+                        <input type="text" id="input-author" placeholder="np. Gu Zhen Ren" class="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-100 focus:border-amber-500 outline-none">
                     </div>
                 </div>
 
@@ -157,11 +163,11 @@
             </form>
         </div>
 
-        <!-- Search & Filters -->
+        <!-- Search & Filter Controls -->
         <div class="flex flex-col sm:flex-row gap-3 justify-between items-center">
             <div class="relative w-full sm:w-auto flex-1">
                 <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 text-xs"></i>
-                <input type="text" id="search-input" oninput="renderQuotes()" placeholder="Szukaj po treści, autorze lub źródle..." class="w-full bg-zinc-950/80 border border-zinc-800/80 rounded-xl pl-9 pr-4 py-2.5 text-xs text-zinc-200 focus:border-amber-500 outline-none">
+                <input type="text" id="search-input" oninput="renderQuotes()" placeholder="Szukaj po treści, bohaterze, tytule lub autorze..." class="w-full bg-zinc-950/80 border border-zinc-800/80 rounded-xl pl-9 pr-4 py-2.5 text-xs text-zinc-200 focus:border-amber-500 outline-none">
             </div>
 
             <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
@@ -172,25 +178,25 @@
             </div>
         </div>
 
-        <!-- Quotes Feed Container -->
+        <!-- Feed Container -->
         <div id="quotes-container" class="space-y-4">
-            <!-- Dynamic Cards -->
+            <!-- Rendered Dynamic Cards -->
         </div>
 
     </main>
 
-    <!-- Backup Modal -->
+    <!-- Modal Backup -->
     <div id="backup-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-card rounded-2xl max-w-md w-full p-6 space-y-4 border-amber-500/40">
             <div class="flex justify-between items-center border-b border-zinc-800 pb-3">
-                <h3 class="text-xs font-bold text-amber-400 uppercase tracking-wider">Zarządzanie Danymi</h3>
+                <h3 class="text-xs font-bold text-amber-400 uppercase tracking-wider">Zarządzanie Baza Danych</h3>
                 <button onclick="toggleBackupModal()" class="text-zinc-500 hover:text-zinc-200"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <p class="text-xs text-zinc-400 leading-relaxed">Możesz zapisać zaktualizowaną bazę do pliku JSON lub wczytać plik zewnętrzny.</p>
+            <p class="text-xs text-zinc-400 leading-relaxed">Możesz zapisać swoją aktualną bazę do pliku JSON lub wczytać zaktualizowany plik z dysku.</p>
 
             <div class="space-y-3 pt-2">
                 <button onclick="exportData()" class="w-full bg-zinc-900 border border-amber-900/50 hover:border-amber-500/60 text-amber-300 font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition">
-                    <i class="fa-solid fa-download"></i> Pobierz plik JSON
+                    <i class="fa-solid fa-download"></i> Eksportuj do quotes.json
                 </button>
 
                 <label class="w-full bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-300 font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 cursor-pointer transition">
@@ -201,13 +207,12 @@
         </div>
     </div>
 
-    <!-- Script Logic -->
+    <!-- Application Script -->
     <script>
         let quotes = [];
         let globalLang = 'pl';
         let currentFilter = 'all';
 
-        // Load Quotes on Start (First from LocalStorage, otherwise fetch quotes.json)
         async function loadQuotes() {
             const localData = localStorage.getItem('my_quotes_app');
             if (localData) {
@@ -224,7 +229,6 @@
                         quotes = [];
                     }
                 } catch (err) {
-                    console.warn('Nie udało się wczytać pliku quotes.json. Startowanie z pustą bazą.');
                     quotes = [];
                 }
                 renderQuotes();
@@ -302,8 +306,9 @@
             let filtered = quotes.filter(q => {
                 const activeText = (q.text[q.cardLang || 'pl'] || q.text.pl || '').toLowerCase();
                 const matchesSearch = activeText.includes(searchVal) ||
-                                      q.author.toLowerCase().includes(searchVal) ||
-                                      (q.source && q.source.toLowerCase().includes(searchVal));
+                                      (q.character && q.character.toLowerCase().includes(searchVal)) ||
+                                      (q.title && q.title.toLowerCase().includes(searchVal)) ||
+                                      (q.author && q.author.toLowerCase().includes(searchVal));
                 const matchesFav = currentFilter === 'fav' ? q.isFavorite : true;
                 return matchesSearch && matchesFav;
             });
@@ -312,7 +317,7 @@
                 container.innerHTML = `
                     <div class="text-center py-12 glass-card rounded-2xl">
                         <i class="fa-solid fa-quote-right text-zinc-600 text-2xl mb-2"></i>
-                        <p class="text-xs text-zinc-500">Brak cytatów do wyświetlenia.</p>
+                        <p class="text-xs text-zinc-500">Brak cytatów pasujących do filtrowania.</p>
                     </div>
                 `;
                 return;
@@ -320,19 +325,19 @@
 
             container.innerHTML = filtered.map(q => {
                 const currentCardLang = q.cardLang || 'pl';
-                const quoteDisplay = q.text[currentCardLang] || q.text.pl || 'Brak tłumaczenia w tym języku';
+                const quoteDisplay = q.text[currentCardLang] || q.text.pl || 'Brak tłumaczenia';
 
                 return `
                     <div class="glass-card rounded-2xl p-5 transition space-y-3 relative">
                         <div class="flex justify-between items-center">
-                            <!-- Card Language Buttons -->
+                            <!-- Card Lang buttons -->
                             <div class="flex items-center gap-1 bg-zinc-900/90 border border-zinc-800 rounded-lg p-0.5 text-[10px]">
                                 <button onclick="setCardLang('${q.id}', 'pl')" class="px-2 py-0.5 rounded font-bold ${currentCardLang === 'pl' ? 'bg-amber-500 text-black' : 'text-zinc-400 hover:text-white'}">PL</button>
                                 <button onclick="setCardLang('${q.id}', 'en')" class="px-2 py-0.5 rounded font-bold ${currentCardLang === 'en' ? 'bg-amber-500 text-black' : 'text-zinc-400 hover:text-white'}">EN</button>
                                 <button onclick="setCardLang('${q.id}', 'de')" class="px-2 py-0.5 rounded font-bold ${currentCardLang === 'de' ? 'bg-amber-500 text-black' : 'text-zinc-400 hover:text-white'}">DE</button>
                             </div>
 
-                            <!-- Actions -->
+                            <!-- Controls -->
                             <div class="flex items-center gap-2.5">
                                 <button onclick="toggleFavorite('${q.id}')" class="text-zinc-500 hover:text-rose-500 transition text-sm">
                                     <i class="${q.isFavorite ? 'fa-solid text-rose-500' : 'fa-regular'} fa-heart"></i>
@@ -346,15 +351,18 @@
                             </div>
                         </div>
 
-                        <!-- Quote Content -->
+                        <!-- Quote Text -->
                         <blockquote class="text-base text-zinc-100 font-serif-custom italic leading-relaxed pt-1">
                             "${quoteDisplay}"
                         </blockquote>
 
-                        <!-- Author & Source -->
-                        <div class="flex justify-between items-center text-xs pt-2 border-t border-zinc-800/60">
-                            <span class="text-amber-400 font-semibold">— ${q.author}</span>
-                            ${q.source ? `<span class="text-zinc-500 italic text-[11px]">${q.source}</span>` : ''}
+                        <!-- Character, Title & Author -->
+                        <div class="flex justify-between items-end text-xs pt-2 border-t border-zinc-800/60">
+                            <div>
+                                <span class="text-amber-400 font-bold block">${q.character || 'Nieznany bohater'}</span>
+                                ${q.title ? `<span class="text-zinc-400 italic text-[11px]">${q.title}</span>` : ''}
+                            </div>
+                            ${q.author ? `<span class="text-zinc-500 text-[11px]">autor: ${q.author}</span>` : ''}
                         </div>
                     </div>
                 `;
@@ -364,8 +372,9 @@
         function displayRandomQuote() {
             if (quotes.length === 0) {
                 document.getElementById('random-quote-text').innerText = '"Brak cytatów w bazie"';
-                document.getElementById('random-quote-author').innerText = '—';
-                document.getElementById('random-quote-source').innerText = '';
+                document.getElementById('random-quote-character').innerText = '—';
+                document.getElementById('random-quote-title').innerText = '';
+                document.getElementById('random-quote-author').innerText = '';
                 return;
             }
 
@@ -374,22 +383,25 @@
             const textDisplay = random.text[globalLang] || random.text.pl || random.text.en || '';
 
             document.getElementById('random-quote-text').innerText = `"${textDisplay}"`;
-            document.getElementById('random-quote-author').innerText = `— ${random.author}`;
-            document.getElementById('random-quote-source').innerText = random.source || '';
+            document.getElementById('random-quote-character').innerText = random.character || 'Nieznany bohater';
+            document.getElementById('random-quote-title').innerText = random.title || '';
+            document.getElementById('random-quote-author').innerText = random.author ? `autor: ${random.author}` : '';
         }
 
         function saveQuote(e) {
             e.preventDefault();
+            const character = document.getElementById('input-character').value.trim();
+            const title = document.getElementById('input-title').value.trim();
             const author = document.getElementById('input-author').value.trim();
-            const source = document.getElementById('input-source').value.trim();
             const textPl = document.getElementById('input-text-pl').value.trim();
             const textEn = document.getElementById('input-text-en').value.trim();
             const textDe = document.getElementById('input-text-de').value.trim();
 
             const newQuote = {
                 id: Date.now().toString(),
+                character: character,
+                title: title,
                 author: author,
-                source: source,
                 text: { pl: textPl, en: textEn, de: textDe },
                 isFavorite: false,
                 cardLang: 'pl'
@@ -417,7 +429,7 @@
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text);
-            alert('Cytat skopiowany!');
+            alert('Cytat skopiowany do schowka!');
         }
 
         function exportData() {
@@ -441,7 +453,7 @@
                         renderQuotes();
                         displayRandomQuote();
                         toggleBackupModal();
-                        alert('Zaimportowano nowe cytaty!');
+                        alert('Baza danych została pomyślnie zaktualizowana!');
                     }
                 } catch (err) {
                     alert('Niepoprawny plik JSON.');
